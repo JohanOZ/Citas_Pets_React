@@ -6,17 +6,8 @@ import paciente from './components/Paciente';
 
 function App() {
 
-  const [pacientes, setPacientes] = useState([]);
+  const [pacientes, setPacientes] = useState(JSON.parse(localStorage.getItem('pacientes')) ?? []);
   const [paciente, setPaciente] = useState({});
-
-  useEffect( () => {
-    const obtenerLC = () => {
-      const pacientesLS = JSON.parse(localStorage.getItem('pacientes')) ?? [];
-      setPacientes(pacientesLS)
-    }
-
-    obtenerLC
-  }, []);
 
   useEffect( () => {
     localStorage.setItem('pacientes', JSON.stringify( pacientes ));
